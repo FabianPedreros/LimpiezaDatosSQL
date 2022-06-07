@@ -8,10 +8,11 @@ Este es un proyecto que hace parte de la lista de reproducción de proyectos par
 
 En los archivos podrán encontrar:
 
-1. Nashville Housing Data for Data Cleaning.xlsx --> Archivo de excel con los datos a limpiar.
-2. Limpieza de datos en SQL.pptx --> Presentación en la que de manera resumida se muestran los pasos ejecutados para la limpieza en SQL.
-3. LimpiezaDeDatos.sql --> Archivo en el que se encuentran las consultas ejecutadas.
-4. Cheat Sheet SQL Data Preparation.jpg --> Imagen que contiene algunas de las consultas más utilizadas para la preparación de datos en SQL.
+1. [Nashville Housing Data for Data Cleaning.xlsx](https://github.com/FabianPedreros/LimpiezaDatosSQL/blob/main/Nashville%20Housing%20Data%20for%20Data%20Cleaning.xlsx)--> Archivo de excel con los datos a limpiar.
+2. [Limpieza de datos en SQL.pptx](https://github.com/FabianPedreros/LimpiezaDatosSQL/blob/main/Limpieza%20de%20datos%20en%20SQL.pptx)--> Presentación en la que de manera resumida se muestran los pasos ejecutados para la limpieza en SQL.
+3. [LimpiezaDeDatos.sql](https://github.com/FabianPedreros/LimpiezaDatosSQL/blob/main/LimpiezaDeDatos.sql)--> Archivo en el que se encuentran las consultas ejecutadas.
+4. [Cheat Sheet SQL Data Preparation.jpg](https://github.com/FabianPedreros/LimpiezaDatosSQL/blob/main/Cheat%20Sheet%20SQL%20Data%20Preparation.jpg)--> Imagen que contiene algunas de las consultas más utilizadas para la preparación de datos en SQL.
+
 
 
 Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7ztF4NtU&list=PLUaB-1hjhk8H48Pj32z4GZgGWyylqv85f&index=3&ab_channel=AlexTheAnalyst
