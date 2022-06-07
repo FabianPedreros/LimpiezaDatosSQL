@@ -21,6 +21,9 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 
 	SELECT TOP 1000 *
 	FROM Nashville..Houses;
+	
+![image](https://user-images.githubusercontent.com/32172901/172442192-b04d530a-b7e0-48a4-9f88-f275fa450dd7.png)
+
 
 ## Estandarización de fechas (SaleDate)
    Eliminación de  los valores de horas, ya que solo contiene información de fecha
@@ -29,6 +32,7 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 
 	  SELECT SaleDate
 	  FROM Nashville..Houses;
+![image](https://user-images.githubusercontent.com/32172901/172442464-9e536158-b355-4b3d-9648-71c46e07181b.png)
 
   ### Visualización de modificación del tipo de dato a Fecha
 
@@ -50,6 +54,8 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 
 	  ALTER TABLE Nashville..Houses
 	  DROP COLUMN SaleDate;
+![image](https://user-images.githubusercontent.com/32172901/172442597-c2d3627b-0b3c-427c-bbd6-f9c93afd7b3d.png)
+
 
   ### Revisión y conteo de valores nulos para SaleDate
 
@@ -77,6 +83,10 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 	SELECT *
 	FROM Nashville..Houses
 	WHERE PropertyAddress IS NULL;
+	
+![image](https://user-images.githubusercontent.com/32172901/172442706-18de1a67-4a43-4aea-9d61-7c32e48c3612.png)
+
+![image](https://user-images.githubusercontent.com/32172901/172442772-9b77832e-0aa4-44e1-9ea4-7c2e92f4d46c.png)
 
 
 ## Consulta de registros con más de un ParcelID
@@ -85,6 +95,9 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 	GROUP BY ParcelID, PropertyAddress
 	HAVING COUNT (PropertyAddress) > 1
 	ORDER BY ParcelID
+	
+![image](https://user-images.githubusercontent.com/32172901/172443301-6c8a910e-38b1-424f-95c9-ccd2a8f206fa.png)
+
 
 ### Consulta de ParcelID y PropertyAddress de la consulta anterior
 	SELECT ParcelID, PropertyAddress
@@ -104,6 +117,9 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 		ON a.ParcelID = b.ParcelID
 		AND a.[UniqueID ]<> b.[UniqueID ]
 	WHERE a.PropertyAddress IS NULL;
+	
+![image](https://user-images.githubusercontent.com/32172901/172443370-6052e63a-807d-4883-8b41-47c241750a89.png)
+
 
 ### Actualización de las direcciones de los ParcelID con direcciones nulas
 
@@ -114,7 +130,11 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 		ON a.ParcelID = b.ParcelID
 		AND a.[UniqueID ]<> b.[UniqueID ]
 	WHERE a.PropertyAddress IS NULL;
-   
+	
+![image](https://user-images.githubusercontent.com/32172901/172443402-a0e73349-e928-4a97-a96c-212492a2051b.png)
+
+![image](https://user-images.githubusercontent.com/32172901/172443464-d3c536f1-d29f-4d9a-b35e-754aedfb04dc.png)
+ 
 
 
 ## División en columnas de los datos en PropertyAddress
@@ -123,6 +143,8 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 
 		SELECT DISTINCT(PropertyAddress)
 		FROM Nashville..Houses;
+		
+![image](https://user-images.githubusercontent.com/32172901/172443724-2357900f-1592-448a-bb0b-3815a47b8192.png)
 
 
 ### Consulta para la división de dirección, valor antes de la coma
@@ -130,6 +152,8 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 		SELECT
 		SUBSTRING (PropertyAddress, 1, CHARINDEX(',', PropertyAddress) - 1) as Direccion
 		FROM Nashville..Houses;
+		
+![image](https://user-images.githubusercontent.com/32172901/172443793-298e29cb-648c-4a8c-8e71-38093be1f287.png)
 
 
 ### Consulta para la división de ciudad, valor despúes de la coma
@@ -144,6 +168,8 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 
 		UPDATE Nashville..Houses
 		SET PropertyDireccion = (SUBSTRING (PropertyAddress, 1, CHARINDEX(',', PropertyAddress) - 1));
+
+![image](https://user-images.githubusercontent.com/32172901/172443855-33c8c442-c8c2-4b99-b488-a29d57fd6a8a.png)
 
 ### Agregar la columna y valores para ciudad
 
@@ -165,6 +191,9 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 
 		SELECT DISTINCT(OwnerAddress)
 		FROM Nashville..Houses;
+		
+![image](https://user-images.githubusercontent.com/32172901/172443889-65ed5a0d-684a-48a0-8991-fa0f44786a31.png)
+
 
 ### Consulta para la división de los valores en OwnerAddress
 
@@ -172,6 +201,9 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 				PARSENAME(REPLACE(OwnerAddress, ',', '.'),2),
 				PARSENAME(REPLACE(OwnerAddress, ',', '.'),1)
 		FROM Nashville..Houses;
+		
+![image](https://user-images.githubusercontent.com/32172901/172443946-e7603b35-a0c5-4e25-8895-d8434ef5a8e1.png)
+
 
 
 ### Agregar la columna y valores para la dirección del dueño
@@ -181,6 +213,8 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 
 		UPDATE Nashville..Houses
 		SET OwnerDireccion = PARSENAME(REPLACE(OwnerAddress, ',', '.'),3);
+		
+![image](https://user-images.githubusercontent.com/32172901/172443994-97cf18ee-2333-40b1-8fa1-be05ad9cf23c.png)
 
 
 ### Agregar la columna y valores para la ciudad del dueño
@@ -208,6 +242,8 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 		FROM Nashville..Houses
 		GROUP BY SoldAsVacant
 		ORDER BY Frecuencia;
+		
+![image](https://user-images.githubusercontent.com/32172901/172444054-a8944551-42f5-4b07-bf01-d0bbe7140030.png)
 
 ### Consulta de valores permitidos en SoldAsVacant
 
@@ -225,6 +261,8 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 			 WHEN SoldAsVacant = 'N' THEN 'No'
 			 ELSE SoldAsVacant
 			 END)
+![image](https://user-images.githubusercontent.com/32172901/172444106-e1c50d9b-cdfd-4072-b871-172e114a8a96.png)
+![image](https://user-images.githubusercontent.com/32172901/172444149-1cabfa59-7fb7-4e01-a03d-1383a13fbc96.png)
 
 
 ## Eliminación de duplicados
@@ -268,11 +306,17 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 		DELETE
 		FROM TablaTem
 		WHERE DUPLICADO >1
+		
+![image](https://user-images.githubusercontent.com/32172901/172444361-84e0779c-ad56-49f2-b27f-e4ac491acf24.png)
+
 
 ### Eliminar columnas innecesarias ###
 
 		ALTER TABLE Nashville..Houses
 		DROP COLUMN OwnerAddress, TaxDistrict, PropertyAddress
+		
+![image](https://user-images.githubusercontent.com/32172901/172444550-f5f823a0-6e0e-4a14-9851-56db4800ad6f.png)
+
 
 ## Eliminar espacios innecesarios en los atributos con strings
 ### Validación de atributo LandUse con valores con espacios adicionales 
@@ -280,6 +324,9 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 		SELECT LandUse, TRIM(REPLACE(LandUse,'  ','')), LEN(LandUse), LEN(TRIM(REPLACE(LandUse,'  ','')))
 		FROM Nashville..Houses
 		WHERE LEN(LandUse) <> LEN(TRIM(REPLACE(LandUse,'  ','')))
+		
+![image](https://user-images.githubusercontent.com/32172901/172444623-30c954c0-a043-4bdd-8c7d-ee988b694573.png)
+
 
 ### Actualización del valor CONDOMINIUM OFC  OR OTHER COM CONDO ###> CONDOMINIUM OFC OR OTHER COM CONDO
 
@@ -287,6 +334,9 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 		SET LandUse = (CASE WHEN LandUse = 'CONDOMINIUM OFC  OR OTHER COM CONDO' THEN 'CONDOMINIUM OFC OR OTHER COM CONDO'
 			 ELSE LandUse
 			 END)
+			 
+![image](https://user-images.githubusercontent.com/32172901/172444663-f6c977dc-241b-40d0-bbf0-845939f588a4.png)
+
 
 ### Validación de actualización
 
@@ -377,6 +427,8 @@ Link a la lista de reproducción de Alex. https://www.youtube.com/watch?v=8rO7zt
 		FROM Nashville..Houses
 		WHERE LEN(OwnerCiudad) <> LEN(TRIM(REPLACE(OwnerCiudad,'  ','')));
 
+![image](https://user-images.githubusercontent.com/32172901/172444737-a966af90-63d3-42db-9fc2-c847fed3a5f1.png)
+
 /*
 Ciudades con error que deberían corregirse en la base de datos
  OLD HICKORY
@@ -396,8 +448,9 @@ Ciudades con error que deberían corregirse en la base de datos
  ### Actualización del valor en OwnerCiudad eliminando espacios dobles
 		UPDATE Nashville..Houses
 		SET OwnerCiudad = TRIM(REPLACE(OwnerCiudad,'  ',''));
-
+		
 
  ### Actualización del tipo de valor al atributo YearBuilt de float a int
 		ALTER TABLE Nashville.dbo.Houses ALTER COLUMN YearBuilt int;  
 		GO 
+![image](https://user-images.githubusercontent.com/32172901/172444817-f2ddeef4-9551-4f95-b3e7-a119d95c336b.png)
