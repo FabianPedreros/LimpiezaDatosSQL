@@ -446,11 +446,14 @@ Ciudades con error que deberían corregirse en la base de datos
  */
  
  ### Actualización del valor en OwnerCiudad eliminando espacios dobles
-		UPDATE Nashville..Houses
-		SET OwnerCiudad = TRIM(REPLACE(OwnerCiudad,'  ',''));
+		
+	UPDATE Nashville..Houses
+	SET OwnerCiudad = TRIM(REPLACE(OwnerCiudad,'  ',''));
 		
 
  ### Actualización del tipo de valor al atributo YearBuilt de float a int
-		ALTER TABLE Nashville.dbo.Houses ALTER COLUMN YearBuilt int;  
-		GO 
+		
+	ALTER TABLE Nashville.dbo.Houses ALTER COLUMN YearBuilt int;  
+	GO 
+	
 ![image](https://user-images.githubusercontent.com/32172901/172444817-f2ddeef4-9551-4f95-b3e7-a119d95c336b.png)
